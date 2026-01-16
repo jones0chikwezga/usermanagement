@@ -1,34 +1,50 @@
-import mongoose, {Schema} from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
-const userSchema = new Schema({
+const userSchema = new Schema(
+  {
     username: {
-    type: String,
-    required: true,
-    unique: true,
-    lowercase: true,
-    trim: true,//allow spaces
-    minLength:1,
-    maxLength:30
-  },
-  password: {
-    type: String,
-    required: true,
-    minLength: 8,
-    maxLength: 30,
-  },
-email :{
-    type: String,
-    required: true,
-    unique: true,
-    lowercase: true,
-    trim: true,
-    
-}
+      type: String,
+      required: true,
+      unique: true,
+      lowercase: true,
+      trim: true
+    },
 
-},
-{
-    timestamps: true,
-  
-}
-)
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      lowercase: true,
+      trim: true
+    },
+
+    password: {
+      type: String,
+      default: null
+    },
+
+    role: {
+      type: String,
+      enum: ["admin", "user"],
+      default: "user"
+    },
+
+    inviteToken: {
+      type: String,
+      default: null
+    },
+
+    inviteTokenExpiry: {
+      type: Date,
+      default: null
+    },
+
+    isActive: {
+      type: Boolean,
+      default: false
+    }
+  },
+  { timestamps: true }
+);
+
 export const User = mongoose.model("User", userSchema);
