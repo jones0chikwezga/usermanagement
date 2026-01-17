@@ -1,26 +1,16 @@
-
 import express from "express";
+import userRoute from "./routes/user.route.js";
+import adminRoute from "./routes/admin.route.js";
+import authRoute from "./routes/auth.route.js";
 
 const app = express(); //create an express app
 
 app.use(express.json());
 
-
-//import routes
-import userRoute from "./routes/user.route.js";
-//import postRouter from "./routes/post.route.js";
-
-//route declaration
-
 app.use("/api/v1/users", userRoute);
-//app.use("/api/v1/posts", postRouter)
-import adminRoute from "./routes/admin.route.js";
-
 app.use("/api/v1/admin", adminRoute);
-
-import authRoute from "./routes/auth.route.js";
-
 app.use("/api/v1/auth", authRoute);
+
 
 
 // so the URL(route) Its gonna look like:http://localhost:4000/api/v1/users/register

@@ -1,9 +1,10 @@
+
+
 import express from "express";
-import { adminCreateUser } from "../controllers/admin.controller.js";
-import { isAdmin } from "../middlewares/admin.middleware.js";
+import { createUser } from "../controllers/admin.controller.js";
 
 const router = express.Router();
 
-router.post("/create-user", isAdmin, adminCreateUser);
+router.post("/create-user", createUser);
 
 export default router;

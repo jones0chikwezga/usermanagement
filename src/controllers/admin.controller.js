@@ -1,12 +1,12 @@
 import crypto from "crypto";
 import { User } from "../models/user.model.js";
 
-export const adminCreateUser = async (req, res) => {
+export const createUser = async (req, res) => {
   try {
     const { username, email, role } = req.body;
 
     if (!username || !email || !role) {
-      return res.status(400).json({ message: "All fields are required" });
+      return res.status(400).json({ message: "All fields required" });
     }
 
     const existingUser = await User.findOne({ email });
@@ -15,18 +15,22 @@ export const adminCreateUser = async (req, res) => {
     }
 
     const inviteToken = crypto.randomBytes(32).toString("hex");
+    const inviteTokenExpiry = Date.now() + 24 * 60 * 60 * 1000; // 24 hours
 
     const user = await User.create({
       username,
       email,
       role,
       inviteToken,
-      inviteTokenExpiry: Date.now() + 24 * 60 * 60 * 1000 // 24 hours
+      inviteTokenExpiry,
+      isActive: false
     });
+
+    const baseUrl = process.env.BASE_URL || "http://localhost:4000";
 
     res.status(201).json({
       message: "User created. Invite link generated.",
-      inviteLink: `http://localhost:4000/api/v1/auth/set-password?token=${inviteToken}`
+      inviteLink: `${baseUrl}/api/v1/auth/set-password?token=${inviteToken}`
     });
 
   } catch (error) {
