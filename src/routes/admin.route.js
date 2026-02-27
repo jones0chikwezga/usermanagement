@@ -1,7 +1,7 @@
 import express from "express";
 import { createUser } from "../controllers/admin.controller.js";
 import { protect, adminOnly } from "../middlewares/auth.middleware.js";
-
+import { toggleUserStatus } from "../controllers/admin.controller.js";
 const router = express.Router();
 
 router.post(
@@ -9,6 +9,12 @@ router.post(
   protect,     // 1️⃣ Verify JWT
   adminOnly,  // 2️⃣ Verify role === admin
   createUser  // 3️⃣ Run controller
+);
+router.patch(
+  "/toggle-status/:id",
+  protect,
+  adminOnly,
+  toggleUserStatus
 );
 
 export default router;
