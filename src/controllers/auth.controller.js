@@ -4,33 +4,41 @@ import jwt from "jsonwebtoken";
 import crypto from "crypto";
 import { sendEmail } from "../utils/sendEmail.js";
 
-export const loginUser = async (req, res) => {
+
+  export const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
 
+    console.log("LOGIN EMAIL:", email);   // ✅ ADD THIS
+
     const user = await User.findOne({ email });
+
+    console.log("USER FOUND:", user);     // ✅ ADD THIS
+
     if (!user) return res.status(400).json({ message: "Invalid credentials" });
     if (!user.isActive) return res.status(403).json({ message: "Account not activated" });
 
     const isMatch = await bcrypt.compare(password, user.password);
+
+    console.log("PASSWORD MATCH:", isMatch);   // ✅ ADD THIS
+
     if (!isMatch) return res.status(400).json({ message: "Invalid credentials" });
 
     // Generate 6-digit OTP
     const otp = crypto.randomInt(100000, 999999).toString();
     user.otp = otp;
-    user.otpExpiry = Date.now() + 5 * 60 * 1000; // 5 minutes
+    user.otpExpiry = Date.now() + 5 * 60 * 1000;
     await user.save();
 
-    // Send OTP to console (for testing)
     console.log(`OTP for ${user.email}: ${otp}`);
 
-    // Or to send via email (when App Password works)
     await sendEmail(user.email, "Your Login OTP", `Your OTP is: ${otp}`);
 
     return res.json({ message: "OTP sent to email" });
   } catch (error) {
     res.status(500).json({ message: "Login failed", error: error.message });
   }
+
 };
 
 export const setPassword = async (req, res) => {
